@@ -1,0 +1,88 @@
+<br>
+<div
+  style="
+    margin-top: 1rem;
+    border-radius: 1rem;
+    border: 1px solid var(--main-border-color);
+    background: var(--card-bg);
+    padding: 1rem;
+    box-shadow: var(--card-shadow);
+  "
+>
+  <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.6rem;">
+    Newsletter
+  </div>
+
+  <form onsubmit="return beehiivMagicLink(event)" style="display:flex; flex-direction:column; gap:0.6rem;">
+    <input
+      type="email"
+      id="beehiiv-email"
+      placeholder="Enter your email"
+      required
+      style="
+        width: 100%;
+        padding: 0.65rem 0.75rem;
+        border-radius: 0.85rem;
+        border: 1px solid var(--main-border-color);
+        background: var(--main-bg);
+        color: var(--text-color);
+        font-size: 0.95rem;
+        outline: none;
+      "
+      onfocus="this.style.borderColor='var(--link-color)';"
+      onblur="this.style.borderColor='var(--main-border-color)';"
+    />
+
+    <button
+      type="submit"
+      style="
+        width: 100%;
+        padding: 0.65rem 0.75rem;
+        border-radius: 0.85rem;
+        border: 1px solid var(--main-border-color);
+        background: var(--main-bg);
+        color: var(--text-color);
+        font-weight: 700;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: transform 120ms ease, border-color 120ms ease;
+      "
+      onmouseover="this.style.transform='translateY(-1px)'; this.style.borderColor='var(--link-color)';"
+      onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='var(--main-border-color)';"
+    >
+      Subscribe
+    </button>
+
+    <p
+      id="beehiiv-msg"
+      style="
+        display: none;
+        margin: 0.15rem 0 0 0;
+        font-size: 0.9rem;
+        color: var(--text-muted-color);
+        line-height: 1.35;
+      "
+    ></p>
+  </form>
+</div>
+
+<script>
+  function beehiivMagicLink(e) {
+    e.preventDefault();
+
+    const emailEl = document.getElementById("beehiiv-email");
+    const msg = document.getElementById("beehiiv-msg");
+    const email = (emailEl.value || "").trim();
+
+    const url =
+      "https://magic.beehiiv.com/v1/78ecc7e8-86c8-4118-8cd5-62c1cb6dd36e?redirect_to=https://cefboud.com&email=" +
+      encodeURIComponent(email);
+
+    // NO redirect: keep current page, open Beehiiv in new tab
+    window.open(url, "_blank", "noopener,noreferrer");
+
+    // msg.style.display = "block";
+    // msg.textContent = "Almost done — confirm in the new tab.";
+    return false;
+  }
+</script>
