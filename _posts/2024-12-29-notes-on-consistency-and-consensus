@@ -1,0 +1,2 @@
+ 
+- In multi replica data systems, linearizability is the property of reflecting the same state regardless of the replica i.e. all replicas returns the same data regardless of replication lag. The system acts as if there is only one replica. Once a write has been made to a value and then a request reads the new value. All subsequent reads must reflect the new value i.e. no stale replica should mistakenly respond with an old value once a new value has been read
